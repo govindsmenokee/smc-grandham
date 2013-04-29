@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ml">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<title>GRANDHAM</title>
+<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+</head>
+<body>
+
+  <table class="table">
+              <thead>
+                <tr>
+                  <th><i class="icon-user"></i> Author</th>
+                  <th><i class="icon-book"></i> Title</th>
+                  <th>Year</th>
+                </tr>
+              </thead>
+              {% for kap in book %}
+              <tbody>
+                <tr class="success">
+                  <td>{{ kap.Author }}</td>
+                  <td>{{ kap.Title }}</td>
+                  <td>{{ kap.Year }}</td>
+                </tr>
+              </tbody>
+              
+{% endfor %}
+</table>
+<div class="pagination">
+<ul>
+        {% if book.has_previous %}
+    <li>        <a href="?page={{ book.previous_page_number }}">previous</a></li>
+        {% endif %}
+
+        <li>
+            Page {{ book.number }} of {{ book.paginator.num_pages }}.
+        </li>
+
+        {% if book.has_next %}
+            <li><a href="?page={{ book.next_page_number }}">next</a></li>
+        {% endif %}
+    </ul>
+</div>
+</body>
+</html>
+
